@@ -20,6 +20,7 @@ public class Canvas extends JComponent{
 
 
 
+	@Override
 	public void paintComponent(Graphics _g){
 		Graphics2D g=(Graphics2D)_g;
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
@@ -33,6 +34,7 @@ public class Canvas extends JComponent{
 
 
 
+	@Override
 	public void addNotify(){
 		super.addNotify();
 		this.requestFocus();

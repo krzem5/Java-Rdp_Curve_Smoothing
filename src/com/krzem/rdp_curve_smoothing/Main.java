@@ -64,6 +64,7 @@ public class Main{
 		this.frame.setUndecorated(true);
 		this.frame.setResizable(false);
 		this.frame.addWindowListener(new WindowAdapter(){
+			@Override
 			public void windowClosing(WindowEvent e){
 				cls.quit();
 			}
@@ -84,14 +85,14 @@ public class Main{
 			@Override
 			public void run(){
 				while (cls._break==false){
-					Long s=System.currentTimeMillis();
+					long s=System.currentTimeMillis();
 					try{
 						cls.canvas.repaint();
 					}
 					catch (Exception e){
 						e.printStackTrace();
 					}
-					Long d=System.currentTimeMillis()-s;
+					long d=System.currentTimeMillis()-s;
 					if (d==0){
 						d=1L;
 					}
@@ -162,7 +163,7 @@ public class Main{
 			double[][] a=this.RDP(pla);
 			double[][] b=this.RDP(plb);
 			double[][] o=new double[a.length-1+b.length][2];
-			for (int i=0;i<a.length-1;i++){
+			for (int i=0;i<b.length-1;i++){
 				if (i<a.length-1){
 					o[i]=a[i];
 				}
