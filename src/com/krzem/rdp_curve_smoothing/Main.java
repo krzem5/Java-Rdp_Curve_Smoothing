@@ -86,7 +86,6 @@ public class Main{
 				while (cls._break==false){
 					Long s=System.currentTimeMillis();
 					try{
-						cls.update();
 						cls.canvas.repaint();
 					}
 					catch (Exception e){
@@ -111,24 +110,18 @@ public class Main{
 
 
 
-	public void update(){
+	public void draw(Graphics2D g){
 		EPSILON+=0.1;
 		if (EPSILON>=100){
 			EPSILON=0;
 		}
-		this.rdp_points=this.RDP(this.points);
-	}
-
-
-
-	public void draw(Graphics2D g){
 		g.setColor(new Color(0,0,0));
 		g.fillRect(0,0,WINDOW_SIZE.width,WINDOW_SIZE.height);
 		g.setColor(new Color(255,255,255));
 		g.setStroke(new BasicStroke(10));
 		this._draw_graph(g,this.points);
 		g.setColor(new Color(255,0,128));
-		this._draw_graph(g,this.rdp_points);
+		this._draw_graph(g,this.RDP(this.points));
 	}
 
 
@@ -187,8 +180,6 @@ public class Main{
 
 
 	private double _point_line_dist(double[] p,double[] a,double[] b){
-		// double dx=(b[0]-a[0])/((b[0]-a[0])*(b[0]-a[0])+(b[1]-a[1])*(b[1]-a[1]))*(((b[0]-a[0])/((b[0]-a[0])*(b[0]-a[0])+(b[1]-a[1])*(b[1]-a[1])))*(p[0]-a[0])+((b[1]-a[1])/((b[0]-a[0])*(b[0]-a[0])+(b[1]-a[1])*(b[1]-a[1])))*(p[1]-a[1]))+a[0]-p[0];
-		// double dy=(b[1]-a[1])/((b[0]-a[0])*(b[0]-a[0])+(b[1]-a[1])*(b[1]-a[1]))*(((b[0]-a[0])/((b[0]-a[0])*(b[0]-a[0])+(b[1]-a[1])*(b[1]-a[1])))*(p[0]-a[0])+((b[1]-a[1])/((b[0]-a[0])*(b[0]-a[0])+(b[1]-a[1])*(b[1]-a[1])))*(p[1]-a[1]))+a[1]-p[1];
 		double lx=(b[0]-a[0]);
 		double ly=(b[1]-a[1]);
 		double lmg=lx*lx+ly*ly;
